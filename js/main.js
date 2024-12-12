@@ -75,9 +75,9 @@ function displayBookmarks() {
     for (var i = 0; i < sitesAll.length; i++) {
         tableBody += `
             <tr>
-                <td>${i}</td>
+                <td>${i+1}</td>
                 <td>${sitesAll[i].name}</td>    
-                <td><a href="${i}" class="btn btn-primary">Visit</a></td>
+                <td><a href="${sitesAll[i].url}" target="_blank" class="btn btn-primary">Visit</a></td>
                 <td><button class="btn btn-danger" onclick="deleteBookmark(${i})">Delete</button></td>
             </tr>
         `;
@@ -98,8 +98,4 @@ function deleteBookmark(index) {
     sitesAll.splice(index, 1);
     localStorage.setItem("sitesAll", JSON.stringify(sitesAll));
     displayBookmarks();
-}
-
-function visitBookmark(index) {
-    window.open(sitesAll[index].url);
 }
