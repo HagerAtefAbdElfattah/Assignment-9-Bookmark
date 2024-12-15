@@ -11,9 +11,7 @@ var regex ={
 
 var sitesAll = [];
 
-if (localStorage.getItem("sitesAll")==null) {
-    sitesAll = [];
-}else{
+if (localStorage.getItem("sitesAll")) {
     sitesAll = JSON.parse(localStorage.getItem("sitesAll"));
     displayBookmarks();
 }
@@ -70,7 +68,7 @@ function addBookmark() {
 }
 
 function displayBookmarks() {
-    tableBody = "";
+    var tableBody = "";
 
     for (var i = 0; i < sitesAll.length; i++) {
         tableBody += `
@@ -82,8 +80,8 @@ function displayBookmarks() {
             </tr>
         `;
 
-        document.getElementById("tableContent").innerHTML = tableBody;
     }
+    document.getElementById("tableContent").innerHTML = tableBody;
 }
 
 function clearBookmarks() {
